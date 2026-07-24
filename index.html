@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save File Test</title>
+</head>
+<body>
+    <textarea id="textarea"></textarea>
+    <button onclick="saveFile(textarea.innerHTML)">save</button>
+    
+    <script>      
+async function saveFile(content) {
+  try {
+    // create a new handle
+    const newHandle = await window.showSaveFilePicker();
+
+    // create a FileSystemWritableFileStream to write to
+    const writableStream = await newHandle.createWritable();
+
+    // write our file
+    await writableStream.write(content);
+
+    // close the file and write the contents to disk.
+    await writableStream.close();
+    console.log("File saved.");
+  } catch (err) {
+    console.error(err.name, err.message);
+  }
+}
+    </script>
+</body>
+</html>
