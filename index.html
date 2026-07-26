@@ -5,11 +5,11 @@
     <title>Save File Test</title>
 </head>
 <body>
-    <textarea id="textarea"></textarea>
-    <button onclick="saveFile(textarea.innerHTML)">save</button>
+    <!--<textarea id="textarea"></textarea>-->
+    <button onclick="saveFile(/*textarea.innerHTML*/)">save</button>
     
     <script>      
-async function saveFile(content) {
+async function saveFile(content = "Hello, world!") {
   try {
     // create a new handle
     const newHandle = await window.showSaveFilePicker();
