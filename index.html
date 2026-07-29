@@ -3,23 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Save File Test</title>
+    <script src="/index.html"></script>
 </head>
 <body>
-    <textarea id="textarea">Hello, world!</textarea>
+    <textarea id="textarea">Hello, world! 🐌</textarea>
     <button onclick="saveFile()">save</button>
-    
-    <script>      
-async function saveFile(content = textarea.value) {
-    try { 
-        const newHandle = await window.showSaveFilePicker();
-        const writableStream = await newHandle.createWritable();
-        await writableStream.write(content);
-        await writableStream.close();
-        document.write("File saved with content: " + content);
-    } catch (err) {
-        document.write(err.name, err.message);
-    }
-}
-    </script>
 </body>
 </html>
