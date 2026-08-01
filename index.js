@@ -1,3 +1,5 @@
+alert("test to see if the script is used");
+
 async function saveFile(content = textarea.value) {
     try { 
         const newHandle = await window.showSaveFilePicker();
