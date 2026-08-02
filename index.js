@@ -2,17 +2,18 @@ let opfsRoot, testFileHandle;
 setupOPFS();
 
 function saveText() {
-    alert("clicked save");
-    status.innerHTML = "Saving...";
-    //writeToFile(textarea.value);
+    statusMessage.innerHTML = "Saving...";
+    writeToFile(textarea.value);
+    statusMessage.innerHTML = "Saved!";
 }
 
-async function read() {
+async function readText() {
     textarea.value = "Reading file..."
     textarea.value = await readFile();
 }
 
 async function setupOPFS() {
+    //see https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system
     opfsRoot = await navigator.storage.getDirectory();
     testFileHandle = await opfsRoot.getFileHandle("test.txt", { create: true });
 }
