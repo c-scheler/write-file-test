@@ -1,15 +1,18 @@
 let opfsRoot, testFileHandle;
 setupOPFS();
 
-async function save() {
-    status.innerHTML = "Saving...";
-    await writeToFile(textArea.value);
-    status.innerHTML = "Saved!";
+function save() {
+    alert("clicked save");
 }
+/*async function save() {
+    status.innerHTML = "Saving...";
+    await writeToFile(textarea.value);
+    status.innerHTML = "Saved!";
+}*/
 
 async function read() {
-    textArea.value = "Reading file..."
-    textArea.value = await readFile();
+    textarea.value = "Reading file..."
+    textarea.value = await readFile();
 }
 
 async function setupOPFS() {
