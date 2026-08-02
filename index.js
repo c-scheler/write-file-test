@@ -1,7 +1,8 @@
 let opfsRoot, testFileHandle;
 setupOPFS();
 
-function save() {
+function saveText() {
+    document.write("clicked save");
     alert("clicked save");
 }
 /*async function save() {
