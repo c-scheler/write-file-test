@@ -1,6 +1,30 @@
-alert("test to see if the script is used");
+let opfsRoot, testFileHandle;
+setupOPFS();
 
-async function saveFile(content = textarea.value) {
+function save() {
+    writeToFile(textArea.value);
+}
+
+function read() {
+    textArea.value = readFile();
+}
+
+async function setupOPFS() {
+    opfsRoot = await navigator.storage.getDirectory();
+    testFileHandle = await opfsRoot.getFileHandle("test.txt", { create: true });
+}
+
+async function readFile() {
+    return await testFileHandle.getFile().text();
+}
+
+async function writeToFile(content) {
+    const writableStream = await testFileHandle.createWritable();
+    await writableStream.write(content);
+    await writableStream.close();
+}
+
+/*async function saveFile(content = textarea.value) {
     try { 
         const newHandle = await window.showSaveFilePicker();
         const writableStream = await newHandle.createWritable();
@@ -10,4 +34,4 @@ async function saveFile(content = textarea.value) {
     } catch (err) {
         document.write(err.name, err.message);
     }
-}
+}*/
