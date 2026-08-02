@@ -2,8 +2,9 @@ let opfsRoot, testFileHandle;
 setupOPFS();
 
 function saveText() {
+    alert("clicked save");
     status.innerHTML = "Saving...";
-    writeToFile(textarea.value);
+    //writeToFile(textarea.value);
 }
 
 async function read() {
